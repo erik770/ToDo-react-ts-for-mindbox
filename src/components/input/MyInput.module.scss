@@ -5,8 +5,9 @@
   //border: 1px solid var(--border-color);
   border: none;
   border-bottom: 2px solid var(--border-color);
+  box-sizing: border-box;
   background-color: var(--background-color-semitransp);
-  outline: none;
+  //outline: none;
   font-size: 18px;
 
   &:focus {

@@ -2,6 +2,7 @@ import React, {FC, useState} from 'react';
 import {MyInput} from "../input/MyInput";
 import {MyButton} from "../button/MyButton";
 import {ITodo} from "../../types/types";
+import classes from "./NewTodoBar.module.scss";
 
 interface NewTodoBarProps {
     addTodoToArr: (newTodo: ITodo) => void
@@ -23,10 +24,10 @@ export const NewTodoBar: FC<NewTodoBarProps> = ({addTodoToArr}) => {
         }
     }
     return (
-        <form onSubmit={addNewTodo}>
+        <form onSubmit={addNewTodo} className={classes.newTodoBar}>
             <MyInput onChange={(e) => setInputValue(e.target.value)} value={inputValue} type='text'
                      placeholder='Enter task name'/>
-            <MyButton> Add task </MyButton>
+            <MyButton className={classes.newTodoBar__button}> Add task </MyButton>
         </form>
     );
 };

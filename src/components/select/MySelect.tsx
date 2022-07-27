@@ -11,7 +11,7 @@ interface MySelectProps{
     options: ISelectOption[],
     defaultValue: string,
     value: DisplayMode | LayoutVariants ,
-    onChange: (value: DisplayMode & string ) => void,
+    onChange: (value: LayoutVariants | DisplayMode) => void,
 }
 
 export const MySelect: FC<MySelectProps> = function ({options, defaultValue, value, onChange}) {
@@ -20,7 +20,7 @@ export const MySelect: FC<MySelectProps> = function ({options, defaultValue, val
       <select
         id='standard-select'
         value={value}
-        onChange={(event) => onChange(event.target.value as DisplayMode)}
+        onChange={(event) => onChange(event.target.value as LayoutVariants | DisplayMode)}
       >
           {defaultValue && <option disabled value="">{defaultValue}</option>}
         {options.map((option) => <option key={option.value} value={option.value}>{option.name}</option>)}

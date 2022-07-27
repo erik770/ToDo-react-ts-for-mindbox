@@ -44,7 +44,7 @@ function App() {
         <Layout layoutType={LayoutVariants.horizontal}>
             <NewTodoBar addTodoToArr={addTodoToArr}/>
             <DisplaySettingsBar displaySettings={displaySettings} setDisplaySettings={setDisplaySettings} />
-            <TodoList todos={todoArray}/>
+            <TodoList todos={todoArray} displayMode={displaySettings.displayMode}/>
         </Layout>
     );
 }

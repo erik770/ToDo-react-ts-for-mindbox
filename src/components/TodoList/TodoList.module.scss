@@ -1,0 +1,20 @@
+.todoList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 18px;
+
+  &__title {
+    font-weight: 600;
+    margin: 10px 15px;
+  }
+  &__items {
+
+  }
+  &_separately{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+}

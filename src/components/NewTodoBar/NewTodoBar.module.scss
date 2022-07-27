@@ -1,0 +1,11 @@
+.newTodoBar {
+  display: flex;
+  align-items: center;
+  height: 33px;
+  margin-bottom: 20px;
+
+  &__button {
+    width: 200px;
+    height: 100%;
+  }
+}

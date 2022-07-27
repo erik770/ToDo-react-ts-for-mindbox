@@ -1,0 +1,16 @@
+.todoItem {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 10px 15px;
+  margin: 6px 0;
+  background-color: var(--background-color-semitransp);
+
+  &__text {
+    flex-grow: 1;
+  }
+  &__icon {
+    cursor: pointer;
+  }
+}
+
