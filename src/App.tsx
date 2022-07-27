@@ -1,11 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import {NewTodoBar} from "./components/NewTodoBar/NewTodoBar";
-import {ITodo} from "./types/types";
+import {DisplayMode, ITodo, LayoutVariants} from "./types/types";
 import {TodoList} from "./components/TodoList/TodoList";
+import Layout from "./components/Layout/Layout";
+import {DisplaySettingsBar} from "./components/DisplaySettings/DisplaySettings";
+
+
+export interface IDisplaySettings {
+    displayMode: DisplayMode,
+    layoutVariant: LayoutVariants,
+}
 
 function App() {
     const [todoArray, setTodoArray] = useState<ITodo[]>([]);
+    const [displaySettings, setDisplaySettings] = useState<IDisplaySettings>({
+        displayMode: DisplayMode.all,
+        layoutVariant: LayoutVariants.vertical
+    });
 
     useEffect(() => setTodoArray([
         {
@@ -21,7 +33,7 @@ function App() {
         {
             "id": 3,
             "title": "fugiat veniam minus",
-            "isDone": false
+            "isDone": true
         }]), []);
 
     const addTodoToArr = (newTodo: ITodo): void => {
@@ -29,10 +41,11 @@ function App() {
     }
 
     return (
-        <div className="App">
+        <Layout layoutType={LayoutVariants.horizontal}>
             <NewTodoBar addTodoToArr={addTodoToArr}/>
+            <DisplaySettingsBar displaySettings={displaySettings} setDisplaySettings={setDisplaySettings} />
             <TodoList todos={todoArray}/>
-        </div>
+        </Layout>
     );
 }
 
