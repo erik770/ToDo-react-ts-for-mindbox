@@ -1,0 +1,11 @@
+.myInput {
+  width: 100%;
+  padding: 5px 15px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border-color);
+  &:focus {
+    outline: none;
+    border-color: var(--btn-border-color);
+    box-shadow: 0 0 1px var(--btn-border-color);
+  }
+}
