@@ -42,12 +42,19 @@ function App() {
     const deleteTodo = (deletingTodo: ITodo) => {
         setTodoArray(todoArray.filter((currentTodo) => currentTodo.id !== deletingTodo.id))
     }
+    const changeTodoDoneStatus = (changingTodo: ITodo) => {
+        setTodoArray(todoArray.map(todo =>
+            (todo.id === changingTodo.id
+                ? {...changingTodo, isDone: !changingTodo.isDone}
+                : todo)))
+    }
 
     return (
         <Layout layoutType={LayoutVariants.horizontal}>
             <NewTodoBar addTodoToArr={addTodoToArr}/>
-            <DisplaySettingsBar displaySettings={displaySettings} setDisplaySettings={setDisplaySettings} />
-            <TodoList todos={todoArray} displayMode={displaySettings.displayMode} deleteTodo={deleteTodo}/>
+            <DisplaySettingsBar displaySettings={displaySettings} setDisplaySettings={setDisplaySettings}/>
+            <TodoList todos={todoArray} displayMode={displaySettings.displayMode}
+                      changeTodoDoneStatus={changeTodoDoneStatus} deleteTodo={deleteTodo}/>
         </Layout>
     );
 }

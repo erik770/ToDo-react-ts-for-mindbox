@@ -1,6 +1,6 @@
 import React, {FC, useEffect} from 'react';
 import {DisplayMode, ITodo} from "../../types/types";
-import TodoItem from "../TodoItem/TodoItem";
+import {TodoItem} from "../TodoItem/TodoItem";
 import classes from "./TodoList.module.scss";
 import {useTodos} from "../../hooks/useTodos";
 
@@ -8,9 +8,10 @@ interface TodoListProps {
     todos: ITodo[],
     displayMode: DisplayMode,
     deleteTodo: (deletingTodo: ITodo) => void
+    changeTodoDoneStatus: (changingTodo: ITodo) => void
 }
 
-export const TodoList: FC<TodoListProps> = ({todos, displayMode, deleteTodo}) => {
+export const TodoList: FC<TodoListProps> = ({todos, displayMode, deleteTodo, changeTodoDoneStatus}) => {
     useEffect(() => {
         const scriptTag = document.createElement('script');
 
@@ -33,9 +34,17 @@ export const TodoList: FC<TodoListProps> = ({todos, displayMode, deleteTodo}) =>
                 <div className={classes.todoList__items}>
                     {isModeSeparately
                         ? filteredTodos.pendingTodos
-                            .map((todo) => <TodoItem todoInfo={todo} deleteTodo={deleteTodo}/>)
+                            .map((todo) =>
+                                <TodoItem
+                                    changeTodoDoneStatus={changeTodoDoneStatus}
+                                    todoInfo={todo}
+                                    deleteTodo={deleteTodo}/>)
                         : filteredTodos.allTodos
-                            .map((todo) => <TodoItem todoInfo={todo} deleteTodo={deleteTodo}/>)}
+                            .map((todo) =>
+                                <TodoItem
+                                    changeTodoDoneStatus={changeTodoDoneStatus}
+                                    todoInfo={todo}
+                                    deleteTodo={deleteTodo}/>)}
                 </div>
             </div>
             {isModeSeparately &&
@@ -43,7 +52,11 @@ export const TodoList: FC<TodoListProps> = ({todos, displayMode, deleteTodo}) =>
                 <span className={classes.todoList__title}>Done</span>
                 <div className={classes.todoList__items}>
                     {filteredTodos.doneTodos
-                        .map((todo) => <TodoItem todoInfo={todo} deleteTodo={deleteTodo}/>)}
+                        .map((todo) =>
+                            <TodoItem
+                                changeTodoDoneStatus={changeTodoDoneStatus}
+                                todoInfo={todo}
+                                deleteTodo={deleteTodo}/>)}
                 </div>
               </div>
             }
