@@ -24,6 +24,7 @@ export const TodoList: FC<TodoListProps> = ({todos, displayMode, deleteTodo, cha
         }
     }, []);
 
+
     const isModeSeparately = displayMode === DisplayMode.separately;
     const filteredTodos = useTodos(todos, displayMode);
 
@@ -36,12 +37,14 @@ export const TodoList: FC<TodoListProps> = ({todos, displayMode, deleteTodo, cha
                         ? filteredTodos.pendingTodos
                             .map((todo) =>
                                 <TodoItem
+                                    key={todo.id}
                                     changeTodoDoneStatus={changeTodoDoneStatus}
                                     todoInfo={todo}
                                     deleteTodo={deleteTodo}/>)
                         : filteredTodos.allTodos
                             .map((todo) =>
                                 <TodoItem
+                                    key={todo.id}
                                     changeTodoDoneStatus={changeTodoDoneStatus}
                                     todoInfo={todo}
                                     deleteTodo={deleteTodo}/>)}
@@ -54,6 +57,7 @@ export const TodoList: FC<TodoListProps> = ({todos, displayMode, deleteTodo, cha
                     {filteredTodos.doneTodos
                         .map((todo) =>
                             <TodoItem
+                                key={todo.id}
                                 changeTodoDoneStatus={changeTodoDoneStatus}
                                 todoInfo={todo}
                                 deleteTodo={deleteTodo}/>)}

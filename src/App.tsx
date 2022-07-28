@@ -13,28 +13,30 @@ export interface IDisplaySettings {
 }
 
 function App() {
-    const [todoArray, setTodoArray] = useState<ITodo[]>([]);
+    const [todoArray, setTodoArray] = useState<ITodo[]>(() => {
+            // const savedTodos = localStorage.getItem("todos");
+            // if (savedTodos) {
+            //     return JSON.parse(savedTodos);
+            // }
+        return [];
+    });
+
     const [displaySettings, setDisplaySettings] = useState<IDisplaySettings>({
         displayMode: DisplayMode.all,
         layoutVariant: LayoutVariants.vertical
     });
 
-    useEffect(() => setTodoArray([
-        {
-            "id": 1,
-            "title": "delectus aut autem",
-            "isDone": false
-        },
-        {
-            "id": 2,
-            "title": "quis ut nam facilis et officia qui",
-            "isDone": false
-        },
-        {
-            "id": 3,
-            "title": "fugiat veniam minus",
-            "isDone": true
-        }]), []);
+    useEffect(() => {
+        const asd = localStorage.getItem("todos");
+        if (asd) {
+            setTodoArray(JSON.parse(asd));
+        }
+        console.log(asd)
+    }, []);
+
+    useEffect(() => {
+        window.localStorage.setItem("todos", JSON.stringify(todoArray));
+    }, [todoArray])
 
     const addTodoToArr = (newTodo: ITodo): void => {
         setTodoArray([...todoArray, newTodo]);
@@ -48,6 +50,7 @@ function App() {
                 ? {...changingTodo, isDone: !changingTodo.isDone}
                 : todo)))
     }
+
 
     return (
         <Layout layoutType={LayoutVariants.horizontal}>
