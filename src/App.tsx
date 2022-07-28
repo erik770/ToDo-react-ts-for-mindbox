@@ -39,12 +39,15 @@ function App() {
     const addTodoToArr = (newTodo: ITodo): void => {
         setTodoArray([...todoArray, newTodo]);
     }
+    const deleteTodo = (deletingTodo: ITodo) => {
+        setTodoArray(todoArray.filter((currentTodo) => currentTodo.id !== deletingTodo.id))
+    }
 
     return (
         <Layout layoutType={LayoutVariants.horizontal}>
             <NewTodoBar addTodoToArr={addTodoToArr}/>
             <DisplaySettingsBar displaySettings={displaySettings} setDisplaySettings={setDisplaySettings} />
-            <TodoList todos={todoArray} displayMode={displaySettings.displayMode}/>
+            <TodoList todos={todoArray} displayMode={displaySettings.displayMode} deleteTodo={deleteTodo}/>
         </Layout>
     );
 }

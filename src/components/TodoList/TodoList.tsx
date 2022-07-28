@@ -2,13 +2,15 @@ import React, {FC, useEffect} from 'react';
 import {DisplayMode, ITodo} from "../../types/types";
 import TodoItem from "../TodoItem/TodoItem";
 import classes from "./TodoList.module.scss";
+import {useTodos} from "../../hooks/useTodos";
 
 interface TodoListProps {
     todos: ITodo[],
     displayMode: DisplayMode,
+    deleteTodo: (deletingTodo: ITodo) => void
 }
 
-export const TodoList: FC<TodoListProps> = ({todos, displayMode}) => {
+export const TodoList: FC<TodoListProps> = ({todos, displayMode, deleteTodo}) => {
     useEffect(() => {
         const scriptTag = document.createElement('script');
 
@@ -21,33 +23,31 @@ export const TodoList: FC<TodoListProps> = ({todos, displayMode}) => {
         }
     }, []);
 
-    return (
-        <div>
-            {displayMode === DisplayMode.all &&
-              <div className={classes.todoList}>
-                <span className={classes.todoList__title}>All</span>
-                <div className={classes.todoList__items}>
-                    {todos.map((todo) => <TodoItem id={todo.id} title={todo.title} isDone={todo.isDone}/>)}
-                </div>
-              </div>
-            }
-            {displayMode === DisplayMode.separately &&
-              <div className={classes.todoList_separately}>
-                <div className={classes.todoList}>
-                  <span className={classes.todoList__title}>Done</span>
-                  <div className={classes.todoList__items}>
-                      {todos.map((todo) => <TodoItem id={todo.id} title={todo.title} isDone={todo.isDone}/>)}
-                  </div>
-                </div>
-                <div className={classes.todoList}>
-                  <span className={classes.todoList__title}>Pending</span>
-                  <div className={classes.todoList__items}>
-                      {todos.map((todo) => <TodoItem id={todo.id} title={todo.title} isDone={todo.isDone}/>)}
-                  </div>
-                </div>
+    const isModeSeparately = displayMode === DisplayMode.separately;
+    const filteredTodos = useTodos(todos, displayMode);
 
+    return (
+        <div className={isModeSeparately ? classes.todoList_separately : ''}>
+            <div className={classes.todoList}>
+                <span className={classes.todoList__title}>{isModeSeparately ? 'Pending' : 'All'}</span>
+                <div className={classes.todoList__items}>
+                    {isModeSeparately
+                        ? filteredTodos.pendingTodos
+                            .map((todo) => <TodoItem todoInfo={todo} deleteTodo={deleteTodo}/>)
+                        : filteredTodos.allTodos
+                            .map((todo) => <TodoItem todoInfo={todo} deleteTodo={deleteTodo}/>)}
+                </div>
+            </div>
+            {isModeSeparately &&
+              <div className={classes.todoList}>
+                <span className={classes.todoList__title}>Done</span>
+                <div className={classes.todoList__items}>
+                    {filteredTodos.doneTodos
+                        .map((todo) => <TodoItem todoInfo={todo} deleteTodo={deleteTodo}/>)}
+                </div>
               </div>
             }
         </div>
+
     );
 };
