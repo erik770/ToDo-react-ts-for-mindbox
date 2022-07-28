@@ -14,10 +14,29 @@ export interface IDisplaySettings {
 
 function App() {
     const [todoArray, setTodoArray] = useState<ITodo[]>(() => {
-            // const savedTodos = localStorage.getItem("todos");
-            // if (savedTodos) {
-            //     return JSON.parse(savedTodos);
-            // }
+        const savedTodos = localStorage.getItem("todos");
+        if (!savedTodos) {
+            return [{
+                "id": 2,
+                "title": "quis ut nam facilis et officia qui",
+                "isDone": false
+            },
+                {
+                    "id": 3,
+                    "title": "fugiat veniam minus",
+                    "isDone": false
+                },
+                {
+                    "id": 4,
+                    "title": "et porro tempora",
+                    "isDone": true
+                },
+                {
+                    "id": 5,
+                    "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+                    "isDone": false
+                },];
+        }
         return [];
     });
 

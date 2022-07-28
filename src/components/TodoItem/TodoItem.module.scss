@@ -4,13 +4,18 @@
   gap: 30px;
   padding: 10px 15px;
   margin: 6px 0;
-  background-color: var(--background-color-semitransp);
+  background-color: var(--background-color-semitransp-white);
 
   &__text {
     flex-grow: 1;
   }
   &__icon {
     cursor: pointer;
+  }
+
+  &_checked{
+    background-color: var(--background-color-semitransp-black);
+    color: white;
   }
 }
 

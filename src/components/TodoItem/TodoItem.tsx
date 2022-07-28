@@ -11,9 +11,12 @@ interface ITodoProps {
 export const TodoItem: FC<ITodoProps> = ({todoInfo, deleteTodo, changeTodoDoneStatus }) => {
     const {id, title, isDone} = todoInfo;
     const [checked, setChecked] = useState(isDone);
-
+    const todoItemClasses = [classes.todoItem];
+    if (isDone){
+        todoItemClasses.push(classes.todoItem_checked)
+    }
     return (
-        <div className={classes.todoItem} key={id}>
+        <div className={todoItemClasses.join(' ')} key={id}>
             {isDone
                 ? <i onClick={() => changeTodoDoneStatus(todoInfo)} className={['fa-solid', 'fa-square-check', classes.todoItem__icon].join(' ')}></i>
                 : <i onClick={() => changeTodoDoneStatus(todoInfo)} className={['fa-regular', 'fa-square-check', classes.todoItem__icon].join(' ')}></i>
