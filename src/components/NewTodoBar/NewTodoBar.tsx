@@ -25,9 +25,9 @@ export const NewTodoBar: FC<NewTodoBarProps> = ({addTodoToArr}) => {
     }
     return (
         <form onSubmit={addNewTodo} className={classes.newTodoBar}>
+            <MyButton className={classes.newTodoBar__button}> <i className="fa-solid fa-plus"></i></MyButton>
             <MyInput onChange={(e) => setInputValue(e.target.value)} value={inputValue} type='text'
                      placeholder='Enter task name'/>
-            <MyButton className={classes.newTodoBar__button}> Add task </MyButton>
         </form>
     );
 };
