@@ -9,23 +9,24 @@ interface DisplaySettingsProps {
 }
 
 export const DisplaySettingsBar: FC<DisplaySettingsProps> = ({displaySettings, setDisplaySettings}) => {
+    const isHorizontalLayoutDisabled = displaySettings.displayMode === DisplayMode.all;
     return (
         <div>
             <MySelect options={[
-                    {name: 'Show all together', value: DisplayMode.all},
-                    {name: 'Show done separately', value: DisplayMode.separately}
-                ]}
+                {name: 'All tasks', value: DisplayMode.all},
+                {name: 'Pending', value: DisplayMode.separately}
+            ]}
                       defaultValue=''
                       value={displaySettings.displayMode}
                       onChange={(selectedValue) => {
                           setDisplaySettings({
-                              ...displaySettings,
+                              layoutVariant: LayoutVariants.vertical,
                               displayMode: selectedValue as DisplayMode,
                           })
                       }}
             />
             <MySelect options={[{name: 'Vertical', value: LayoutVariants.vertical},
-                {name: 'Horizontal', value: LayoutVariants.horizontal}]}
+                {name: 'Horizontal', value: LayoutVariants.horizontal, isDisabled: isHorizontalLayoutDisabled}]}
                       defaultValue=''
                       value={displaySettings.layoutVariant}
                       onChange={(selectedValue) => {

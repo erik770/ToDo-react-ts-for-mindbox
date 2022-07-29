@@ -8,7 +8,7 @@ interface NewTodoBarProps {
     addTodoToArr: (newTodo: ITodo) => void
 }
 
-export const NewTodoBar: FC<NewTodoBarProps> = ({addTodoToArr}) => {
+export const NewTodoBtnBar: FC<NewTodoBarProps> = ({addTodoToArr}) => {
     const [inputValue, setInputValue] = useState<string>('')
 
     const addNewTodo = (e: React.FormEvent) => {

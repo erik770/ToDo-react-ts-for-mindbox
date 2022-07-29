@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import {NewTodoBar} from "./components/NewTodoBar/NewTodoBar";
 import {DisplayMode, ITodo, LayoutVariants} from "./types/types";
 import {TodoList} from "./components/TodoList/TodoList";
-import Layout from "./components/Layout/Layout";
-import {DisplaySettingsBar} from "./components/DisplaySettings/DisplaySettings";
+import UserBar from "./components/UserBar/UserBar";
 
 
 export interface IDisplaySettings {
@@ -72,12 +70,13 @@ function App() {
 
 
     return (
-        <Layout layoutType={LayoutVariants.horizontal}>
-            <NewTodoBar addTodoToArr={addTodoToArr}/>
-            <DisplaySettingsBar displaySettings={displaySettings} setDisplaySettings={setDisplaySettings}/>
-            <TodoList todos={todoArray} displayMode={displaySettings.displayMode}
-                      changeTodoDoneStatus={changeTodoDoneStatus} deleteTodo={deleteTodo}/>
-        </Layout>
+        // <Layout layoutType={LayoutVariants.horizontal}>
+        <div className='App'>
+            <UserBar addTodoToArr={addTodoToArr} displaySettings={displaySettings}
+                     setDisplaySettings={setDisplaySettings}/>
+                <TodoList todos={todoArray} displaySettings={displaySettings}
+                          changeTodoDoneStatus={changeTodoDoneStatus} deleteTodo={deleteTodo}/>
+        </div>
     );
 }
 
