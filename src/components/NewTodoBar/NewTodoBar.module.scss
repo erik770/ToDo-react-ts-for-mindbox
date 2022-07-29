@@ -8,12 +8,18 @@
   position: relative;
 
   &__button {
-    &:focus ~ input{
-      width: 300px;
-      border-radius: 0px;
-      background-color: var(--background-color-semitransp-black);
-      border-bottom:1px solid rgba(255,255,255,.5);
-      transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+
+    &:focus{
+      transform: rotate(180deg);
+      transition: all 500ms ease;
+
+      &~ input{
+        width: calc(100px + 20vw);
+        border-radius: 0px;
+        background-color: var(--input-background-color);
+        border-bottom:1px solid var(--input-border-color);
+        transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+      }
     }
   }
 }

@@ -10,6 +10,7 @@ select {
   font-size: inherit;
   cursor: inherit;
   line-height: inherit;
+  //color: var(--light-text-color);
 
   z-index: 1;
 
@@ -24,6 +25,9 @@ select {
   grid-template-areas: "select";
   align-items: center;
   position: relative;
+  background-color: var(--select-background);
+  color: var(--light-text-color);
+  box-shadow: var(--select-shadow);
 
   select,
   &::after {
@@ -36,7 +40,6 @@ select {
   border: 1px solid var(--select-border);
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
-  margin-bottom: 5px;
   cursor: pointer;
 
   &:not(.select--multiple)::after {
@@ -66,7 +69,7 @@ option {
 
 .select--disabled {
   cursor: not-allowed;
-  background-color: #eee;
+  background-color: var(--select-background);
   background-image: linear-gradient(to top, #ddd, #eee 33%);
 }
 

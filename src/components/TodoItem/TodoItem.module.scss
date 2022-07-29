@@ -4,7 +4,8 @@
   gap: 30px;
   padding: 10px 15px;
   margin: 6px 0;
-  background-color: var(--background-color-semitransp-white);
+  background-color: var(--todo-background-color-semitransp-white);
+  color: var(--dark-text-color);
 
   &__text {
     flex-grow: 1;
@@ -14,8 +15,11 @@
   }
 
   &_checked{
-    background-color: var(--background-color-semitransp-black);
-    color: white;
+    background-color: var(--todo-background-color-semitransp-black);
+    color: var(--light-text-color);
+    & .todoItem__text {
+      text-decoration: line-through ;
+    }
   }
 }
 

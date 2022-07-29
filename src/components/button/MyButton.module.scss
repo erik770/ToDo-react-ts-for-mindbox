@@ -8,7 +8,7 @@
   border-radius: 50%;
   position: absolute;
   right: 0;
-  color:#ffffff ;
+  color: var(--btn-plus-color-inactive) ; // плюсик в кнопке
   background-color:transparent;
   pointer-events: painted;
 }

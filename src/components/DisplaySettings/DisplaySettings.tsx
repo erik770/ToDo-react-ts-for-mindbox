@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import {MySelect} from "../select/MySelect";
 import {DisplayMode, LayoutVariants} from "../../types/types";
 import {IDisplaySettings} from "../../App";
+import classes from "./DisplaySettings.module.scss";
 
 interface DisplaySettingsProps {
     displaySettings: IDisplaySettings,
@@ -11,7 +12,7 @@ interface DisplaySettingsProps {
 export const DisplaySettingsBar: FC<DisplaySettingsProps> = ({displaySettings, setDisplaySettings}) => {
     const isHorizontalLayoutDisabled = displaySettings.displayMode === DisplayMode.all;
     return (
-        <div>
+        <div className={classes.displaySettings}>
             <MySelect options={[
                 {name: 'All tasks', value: DisplayMode.all},
                 {name: 'Pending', value: DisplayMode.separately}
