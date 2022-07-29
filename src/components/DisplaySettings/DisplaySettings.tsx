@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
-import {MySelect} from "../select/MySelect";
-import {DisplayMode, LayoutVariants} from "../../types/types";
-import {IDisplaySettings} from "../../App";
+import {MySelect} from "../Select/MySelect";
+import {DisplayMode, LayoutVariants, IDisplaySettings} from "../../types/types";
 import classes from "./DisplaySettings.module.scss";
 
 interface DisplaySettingsProps {

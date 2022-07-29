@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
-import {MyInput} from "../input/MyInput";
-import {MyButton} from "../button/MyButton";
+import {MyInput} from "../Input/MyInput";
+import {MyButton} from "../Button/MyButton";
 import {ITodo} from "../../types/types";
 import classes from "./NewTodoBar.module.scss";
 

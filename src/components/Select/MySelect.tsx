@@ -1,12 +1,6 @@
 import React, {FC} from "react";
 import classes from './MySelect.module.scss'
-import {DisplayMode, LayoutVariants} from "../../types/types";
-
-interface ISelectOption {
-    value: DisplayMode | LayoutVariants,
-    name: string,
-    isDisabled?: boolean,
-}
+import {DisplayMode, ISelectOption, LayoutVariants} from "../../types/types";
 
 interface MySelectProps {
     options: ISelectOption[],

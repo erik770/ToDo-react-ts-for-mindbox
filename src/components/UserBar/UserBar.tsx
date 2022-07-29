@@ -1,8 +1,7 @@
 import React, {FC} from 'react';
 import {NewTodoBtnBar} from "../NewTodoBar/NewTodoBar";
 import {DisplaySettingsBar} from "../DisplaySettings/DisplaySettings";
-import {ITodo} from "../../types/types";
-import {IDisplaySettings} from "../../App";
+import {ITodo, IDisplaySettings} from "../../types/types";
 import classes from "./UserBar.module.scss";
 
 interface UserBarProps {

@@ -21,5 +21,27 @@
       text-decoration: line-through ;
     }
   }
+  &-enter {
+    transform: translateY(-50px);
+    opacity: 0;
+
+    &-active {
+      transform: translateY(0);
+      opacity: 1;
+      transition: all 500ms ease-in-out;
+    }
+  }
+  &-exit {
+    transform: translateY(0);
+    opacity: 1;
+    display: none;
+
+    &-active {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 500ms ease-in-out;
+    }
+  }
 }
+
 
