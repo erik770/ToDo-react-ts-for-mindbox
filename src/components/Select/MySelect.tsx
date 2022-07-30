@@ -7,11 +7,12 @@ interface MySelectProps {
     defaultValue: string,
     value: DisplayMode | LayoutVariants,
     onChange: (value: LayoutVariants | DisplayMode) => void,
+    className?: string,
 }
 
-export const MySelect: FC<MySelectProps> = function ({options, defaultValue, value, onChange}) {
+export const MySelect: FC<MySelectProps> = function ({className, options, defaultValue, value, onChange}) {
     return (
-        <div className={classes.select}>
+        <div className={[classes.select, className].join(' ')}>
             <select
                 id='standard-select'
                 value={value}

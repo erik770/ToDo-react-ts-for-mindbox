@@ -1,3 +1,5 @@
+@import "../../consts/mixins";
+
 select {
   appearance: none;
   background-color: transparent;
@@ -26,14 +28,14 @@ select {
   background-color: var(--select-background);
   color: var(--light-text-color);
   box-shadow: var(--select-shadow);
+  flex-grow: 1;
+
+  @include adaptive-value('font-size', 17, 12, 1200);
 
   select,
   &::after {
     grid-area: select;
   }
-
-  min-width: 15ch;
-  max-width: 20ch;
 
   border: 1px solid var(--select-border);
   border-radius: 0.25em;
@@ -61,7 +63,6 @@ select:focus + .focus {
 
 option {
   white-space: normal;
-
   outline-color: var(--select-focus);
 }
 
@@ -69,13 +70,4 @@ option {
   cursor: not-allowed;
   background-color: var(--select-background);
   background-image: linear-gradient(to top, #ddd, #eee 33%);
-}
-
-label {
-  font-size: 1.125rem;
-  font-weight: 500;
-}
-
-.select + label {
-  margin-top: 2rem;
 }

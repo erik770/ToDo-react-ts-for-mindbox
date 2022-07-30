@@ -1,21 +1,23 @@
+@import "../../consts/mixins.scss";
+
 .todoList {
   display: flex;
   flex-direction: column;
   gap: 5px;
   font-size: 18px;
   width: 100%;
+  @include adaptive-value('font-size', 20, 15, 1200);
 
   &__title {
     font-weight: 600;
     margin: 10px 15px;
+    @include adaptive-value('margin-bottom', 10, 3, 1200);
   }
-  &__items {
 
-  }
   &_separately{
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    @include adaptive-value('gap', 40, 8, 1200);
     &-horizontal{
       flex-direction: row;
     }

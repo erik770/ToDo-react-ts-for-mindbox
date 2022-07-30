@@ -1,3 +1,5 @@
+@import "../../consts/mixins";
+
 .newTodoBar {
   width: fit-content;
   height: fit-content;
@@ -10,11 +12,12 @@
       transition: all 500ms ease;
 
       &~ input{
-        width: calc(100px + 20vw);
+        @include adaptive-value('width', 800, 190, 1200);
+
         border-radius: 0;
         background-color: var(--input-background-color);
         border-bottom:1px solid var(--input-border-color);
-        transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+        transition: all 500ms cubic-bezier(0, 0.110, 0.35, 1.5);
       }
     }
   }

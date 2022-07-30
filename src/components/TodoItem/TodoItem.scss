@@ -1,7 +1,10 @@
+@import "../../consts/mixins";
+
 .todoItem {
   display: flex;
   align-items: center;
-  gap: 30px;
+  @include adaptive-value('gap', 30, 12, 1200);
+
   padding: 10px 15px;
   margin: 6px 0;
   background-color: var(--todo-background-color-semitransp-white);

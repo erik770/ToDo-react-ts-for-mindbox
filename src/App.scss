@@ -1,0 +1,17 @@
+@import './consts/mixins.scss';
+
+.App {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    flex: 1 1 100%;
+    margin: auto;
+
+    @include adaptive-value('padding', 30, 10, 1200);
+    @include adaptive-value('margin-right', 25, 2.5, 1200);
+    @include adaptive-value('margin-left', 25, 2.5, 1200);
+    @include adaptive-value('gap', 20, 10, 1200);
+}
+
+
+

@@ -1,5 +1,15 @@
+@import "../../consts/mixins";
+
 .displaySettings {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  @include adaptive-value('width', 130, 80, 1200);
+  @include adaptive-value('gap', 10, 6, 1200);
+
+  &__layout{
+    @media (max-width: 374px) {
+        display: none;
+    }
+  }
 }
+

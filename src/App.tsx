@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
+import './App.scss';
 import {DisplayMode, ITodo, LayoutVariants} from "./types/types";
 import {TodoList} from "./components/TodoList/TodoList";
 import UserBar from "./components/UserBar/UserBar";

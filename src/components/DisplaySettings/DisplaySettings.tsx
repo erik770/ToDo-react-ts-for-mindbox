@@ -25,7 +25,7 @@ export const DisplaySettingsBar: FC<DisplaySettingsProps> = ({displaySettings, s
                           })
                       }}
             />
-            <MySelect options={[{name: 'Vertical', value: LayoutVariants.vertical},
+            <MySelect className={classes.displaySettings__layout} options={[{name: 'Vertical', value: LayoutVariants.vertical},
                 {name: 'Horizontal', value: LayoutVariants.horizontal, isDisabled: isHorizontalLayoutDisabled}]}
                       defaultValue=''
                       value={displaySettings.layoutVariant}
