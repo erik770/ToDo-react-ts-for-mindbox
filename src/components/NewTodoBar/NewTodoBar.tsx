@@ -3,6 +3,7 @@ import {MyInput} from "../Input/MyInput";
 import {MyButton} from "../Button/MyButton";
 import {ITodo} from "../../types/types";
 import classes from "./NewTodoBar.module.scss";
+import {useFocus} from "../../hooks/useFocus";
 
 interface NewTodoBarProps {
     addTodoToArr: (newTodo: ITodo) => void
@@ -11,16 +12,14 @@ interface NewTodoBarProps {
 export const NewTodoBtnBar: FC<NewTodoBarProps> = ({addTodoToArr}) => {
     const [inputValue, setInputValue] = useState<string>('')
     const [isActive, setIsActive] = useState(false);
+    const [inputRef, setFocus] = useFocus();
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        // 👇️ toggle isActive state on click
-        setIsActive(current => !current);
+        setIsActive(!isActive);
     };
-    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-        setIsActive(current => !current)
-    };
-    const addNewTodo = (e: React.FormEvent) => {
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => setIsActive(!isActive);
 
+    const addNewTodo = (e: React.FormEvent) => {
         e.preventDefault();
         if (inputValue) {
             const newTodo: ITodo = {
@@ -35,7 +34,7 @@ export const NewTodoBtnBar: FC<NewTodoBarProps> = ({addTodoToArr}) => {
     return (
         <form onSubmit={addNewTodo} className={classes.newTodoBar}>
             <MyButton onClick={handleClick} className={isActive ? classes.newTodoBar__button_active : ''}> <i className="fa-solid fa-plus"></i></MyButton>
-            <MyInput onBlur={handleBlur} onChange={(e) => setInputValue(e.target.value)} value={inputValue} type='text'
+            <MyInput ref={inputRef} onBlur={handleBlur} onChange={(e) => setInputValue(e.target.value)} value={inputValue} type='text'
                      placeholder='Enter task name'/>
         </form>
     );
