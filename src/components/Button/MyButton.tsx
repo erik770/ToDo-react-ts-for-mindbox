@@ -1,9 +1,15 @@
-import React, {ReactNode} from "react";
+import React, {FC, ReactNode} from "react";
 import classes from './MyButton.module.scss';
 
-export const MyButton = function ({children, className, ...props}: {children: ReactNode, className: any}) {
+interface MyButtonProps {
+    children: ReactNode,
+    className: string,
+    onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
+
+export const MyButton: FC<MyButtonProps> = function ({children, className, onClick, ...props}) {
     return (
-        <button className={[classes.myBtn, className].join(' ')}  {...props}>
+        <button onClick={onClick}  className={[classes.myBtn, className].join(' ')}  {...props}>
             {children}
         </button>
     )

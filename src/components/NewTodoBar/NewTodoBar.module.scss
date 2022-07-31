@@ -7,7 +7,7 @@
 
   &__button {
 
-    &:focus{
+    &_active {
       transform: rotate(180deg);
       transition: all 500ms ease;
 
@@ -19,6 +19,9 @@
         border-bottom:1px solid var(--input-border-color);
         transition: all 500ms cubic-bezier(0, 0.110, 0.35, 1.5);
       }
+    }
+    &:focus{
+
     }
   }
 }
