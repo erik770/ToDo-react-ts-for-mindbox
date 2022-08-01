@@ -7,6 +7,9 @@ state manager
 
 <img src="./imgs/propDrillingVsContext.png">
 
+## Deploy 
+https://todo-tsx-app.netlify.app
+
 ## Available Scripts
 
 In the project directory, you can run:
