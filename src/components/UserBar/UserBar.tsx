@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {NewTodoBtnBar} from "../NewTodoBar/NewTodoBar";
+import {NewTodoBtnBar} from "../NewTodoBtnBar/NewTodoBtnBar";
 import {DisplaySettingsBar} from "../DisplaySettings/DisplaySettings";
 import {ITodo, IDisplaySettings} from "../../types/types";
 import classes from "./UserBar.module.scss";

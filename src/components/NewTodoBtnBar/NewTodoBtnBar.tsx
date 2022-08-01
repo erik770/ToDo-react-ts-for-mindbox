@@ -2,7 +2,7 @@ import React, {FC, useState} from 'react';
 import {MyInput} from "../Input/MyInput";
 import {MyButton} from "../Button/MyButton";
 import {ITodo} from "../../types/types";
-import classes from "./NewTodoBar.module.scss";
+import classes from "./NewTodoBtnBar.module.scss";
 
 interface NewTodoBarProps {
     addTodoToArr: (newTodo: ITodo) => void
